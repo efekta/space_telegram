@@ -25,9 +25,9 @@ def upload_image_epic(url_nasa_epic):
     epic_nasa_links = []
     response_nasa_epic = requests.get(url_nasa_epic, params=payload_epic)
     response_nasa_epic.raise_for_status()
-    response_nasa_epic_list = response_nasa_epic.json()
+    response_nasa_epic_links = response_nasa_epic.json()
 
-    for item in response_nasa_epic_list:
+    for item in response_nasa_epic_links:
         date_item = item['date']
         date_time = datetime.fromisoformat(date_item)
         date = date_time.date()
