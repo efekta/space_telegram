@@ -1,4 +1,7 @@
 from send_telegram import send_telegram
+from fetch_nasa import upload_image_nasa
+from fetch_nasa import upload_image_epic
+from fetch_spacex import fetch_spacex_last_launch
 import os
 import argparse
 import requests
@@ -14,6 +17,9 @@ def main():
 
     try:
         if args_channel_id == channel_id:
+            upload_image_epic()
+            upload_image_nasa()
+            fetch_spacex_last_launch()
             send_telegram()
         else:
             print('Некорректный ввод!')

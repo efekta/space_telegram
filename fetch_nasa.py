@@ -4,24 +4,13 @@ from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 
-load_dotenv()
-nasa_token = os.getenv('NASA_TOKEN')
-count = 10
-url_nasa = f'https://api.nasa.gov/planetary/apod'
-url_nasa_epic = f'https://api.nasa.gov/EPIC/api/natural'
-path_img = 'images/'
-Path('images').mkdir(parents=True, exist_ok=True)
-
-payload_nasa = {
-    'api_key': nasa_token,
-    'count': count
-}
-
-payload_epic = {
-    'api_key': nasa_token
-}
-
-def upload_image_epic(url_nasa_epic):
+def upload_image_epic():
+    load_dotenv()
+    nasa_token = os.getenv('NASA_TOKEN')
+    path_img = 'images/'
+    Path('images').mkdir(parents=True, exist_ok=True)
+    url_nasa_epic = f'https://api.nasa.gov/EPIC/api/natural'
+    payload_epic = {'api_key': nasa_token}
     epic_nasa_links = []
     response_nasa_epic = requests.get(url_nasa_epic, params=payload_epic)
     response_nasa_epic.raise_for_status()
@@ -45,7 +34,14 @@ def upload_image_epic(url_nasa_epic):
         with open(f'{path_img}{image_name}', 'wb') as file:
             file.write(response_nasa.content)
 
-def upload_image_nasa(url_nasa):
+def upload_image_nasa():
+    count = 10
+    load_dotenv()
+    nasa_token = os.getenv('NASA_TOKEN')
+    path_img = 'images/'
+    Path('images').mkdir(parents=True, exist_ok=True)
+    url_nasa = f'https://api.nasa.gov/planetary/apod'
+    payload_nasa = {'api_key': nasa_token, 'count': count}
     nasa_links = []
     response_nasa = requests.get(url_nasa, params=payload_nasa)
     response_nasa.raise_for_status()
