@@ -6,8 +6,6 @@ from dotenv import load_dotenv
 def upload_image_epic():
     load_dotenv()
     nasa_token = os.getenv('NASA_TOKEN')
-    # path_img = 'images/'
-    # Path('images').mkdir(parents=True, exist_ok=True)
     url_nasa_epic = f'https://api.nasa.gov/EPIC/api/natural/'
     payload_epic = {'api_key': nasa_token}
     epic_nasa_links = []

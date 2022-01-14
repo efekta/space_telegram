@@ -1,14 +1,11 @@
 import requests
 import os.path
-from pathlib import Path
 from dotenv import load_dotenv
 
 def upload_image_nasa():
     count = 30
     load_dotenv()
     nasa_token = os.getenv('NASA_TOKEN')
-    # path_img = 'images/'
-    # Path('images').mkdir(parents=True, exist_ok=True)
     url_nasa = f'https://api.nasa.gov/planetary/apod'
     payload_nasa = {'api_key': nasa_token, 'count': count}
     nasa_links = []

@@ -2,11 +2,10 @@ import requests
 from fetch_spacex import fetch_spacex_last_launch
 from pathlib import Path
 
+path_img = 'images/'
+Path('images').mkdir(parents=True, exist_ok=True)
 
 def upload_pictures():
-    fetch_spacex_last_launch()
-    path_img = 'images/'
-    Path('images').mkdir(parents=True, exist_ok=True)
     for link_number, link in enumerate(fetch_spacex_last_launch()):
         image_name = f'spacex{link_number}.jpg'
         response_spacex = requests.get(link)
