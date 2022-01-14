@@ -1,6 +1,6 @@
 from send_telegram import send_telegram
 from fetch_nasa import upload_image_nasa
-from fetch_nasa import upload_image_epic
+from fetch_nasa_epic import upload_image_epic
 from fetch_spacex import fetch_spacex_last_launch
 import os
 import argparse
