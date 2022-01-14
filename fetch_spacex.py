@@ -3,7 +3,6 @@ import requests
 
 def fetch_spacex_last_launch():
     url_spacex = 'https://api.spacexdata.com/v4/rockets'
-    # spacex_links = []
     response_spacex = requests.get(url_spacex)
     response_spacex.raise_for_status()
     response_spacex_links = response_spacex.json()
