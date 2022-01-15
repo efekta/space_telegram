@@ -1,30 +1,23 @@
 import requests
-import os.path
-from dotenv import load_dotenv
+from extension_file import extension_file
+from download_pictures import download_pictures
 
-def upload_image_nasa():
-    count = 30
-    load_dotenv()
-    nasa_token = os.getenv('NASA_TOKEN')
+def upload_image_nasa(payload_nasa, directory):
     url_nasa = f'https://api.nasa.gov/planetary/apod'
-    payload_nasa = {'api_key': nasa_token, 'count': count}
-    nasa_links = []
+    path_pictures = directory
     response_nasa = requests.get(url_nasa, params=payload_nasa)
     response_nasa.raise_for_status()
     response_nasa = response_nasa.json()
 
-    for link in response_nasa:
+    for link_number, link in enumerate(response_nasa):
         link = link['url']
-        nasa_links.append(link)
+        extension_file_name = extension_file(link)
+        file_name = f'planetary_{link_number}{extension_file_name}'
+        picture_path = f'{path_pictures}/{file_name}'
 
-    return nasa_links
+        download_pictures(url=link,
+                          payload=payload_nasa,
+                          path_pictures=picture_path)
 
-upload_image_nasa()
-    # for link_number, link in enumerate(nasa_links):
-    #     image_name = f'nasa{link_number}.jpg'
-    #     response_nasa = requests.get(link)
-    #     response_nasa.raise_for_status()
-    #     with open(f'{path_img}{image_name}', 'wb') as file:
-    #         file.write(response_nasa.content)
 
 
