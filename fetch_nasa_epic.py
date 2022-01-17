@@ -1,10 +1,10 @@
 import requests
 from datetime import datetime
 from extension_file import extension_file
-from download_pictures import download_pictures
+from download_picture import download_picture
 
 def upload_image_epic(directory, payload_epic, nasa_token):
-    path_pictures = directory
+    path_picture = directory
     url_nasa_epic = f'https://api.nasa.gov/EPIC/api/natural/'
     response_nasa_epic = requests.get(url_nasa_epic, params=payload_epic)
     response_nasa_epic.raise_for_status()
@@ -20,8 +20,8 @@ def upload_image_epic(directory, payload_epic, nasa_token):
                      f'{now_date}/png/{image_name}.png?api_key={nasa_token}'
         extension_file_name = extension_file(format_url)
         file_name = f'{image_name}{extension_file_name}'
-        picture_path = f'{path_pictures}/{file_name}'
+        picture_path = f'{path_picture}/{file_name}'
 
-        download_pictures(url=format_url,
+        download_picture(url=format_url,
                           payload=nasa_token,
-                          path_pictures=picture_path)
+                          path_picture=picture_path)
