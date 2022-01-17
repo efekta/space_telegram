@@ -11,8 +11,8 @@ def fetch_image_nasa(payload_nasa, directory):
 
     for link_number, link in enumerate(response_nasa):
         link = link['url']
-        find_extension_file_name = find_extension_file(link)
-        file_name = f'planetary_{link_number}{find_extension_file_name}'
+        find_extension = find_extension_file(link)
+        file_name = f'planetary_{link_number}{find_extension}'
         picture_path = f'{path_picture}/{file_name}'
 
         download_picture(url=link,

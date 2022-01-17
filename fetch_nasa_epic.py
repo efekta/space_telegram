@@ -18,8 +18,8 @@ def fetch_image_epic(directory, payload_epic, nasa_token):
         image_name = item['image']
         format_url = f'https://api.nasa.gov/EPIC/archive/natural/' \
                      f'{now_date}/png/{image_name}.png?api_key={nasa_token}'
-        find_extension_file_name = find_extension_file(format_url)
-        file_name = f'{image_name}{find_extension_file_name}'
+        find_extension = find_extension_file(format_url)
+        file_name = f'{image_name}{find_extension}'
         picture_path = f'{path_picture}/{file_name}'
 
         download_picture(url=format_url,
