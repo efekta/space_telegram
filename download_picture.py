@@ -1,6 +1,6 @@
 import requests
 
-def download_picture(url: str, payload: str, path_picture: str):
+def download_picture(url: str, payload, path_picture: str):
     response = requests.get(url, params=payload)
     response.raise_for_status()
 
