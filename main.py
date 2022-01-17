@@ -30,7 +30,7 @@ def main():
     try:
         fetch_spacex_last_launch(directory)
         fetch_image_nasa(payload_nasa, directory)
-        fetch_image_epic(directory, payload_epic, nasa_token)
+        fetch_image_epic(directory, payload_epic)
     except requests.models.HTTPError:
         print('Некорректный ответ сервера')
     while True:
