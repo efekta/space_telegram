@@ -4,7 +4,7 @@ from find_extension_file import find_extension_file
 from download_picture import download_picture
 
 def fetch_image_epic(directory, payload_epic, nasa_token):
-    path_picture = directory
+    # path_picture = directory
     url_nasa_epic = f'https://api.nasa.gov/EPIC/api/natural/'
     response_nasa_epic = requests.get(url_nasa_epic, params=payload_epic)
     response_nasa_epic.raise_for_status()
@@ -20,7 +20,7 @@ def fetch_image_epic(directory, payload_epic, nasa_token):
                      f'{now_date}/png/{image_name}.png?api_key={nasa_token}'
         find_extension = find_extension_file(format_url)
         file_name = f'{image_name}{find_extension}'
-        picture_path = f'{path_picture}/{file_name}'
+        picture_path = f'{directory}/{file_name}'
 
         download_picture(url=format_url,
                           payload=nasa_token,
