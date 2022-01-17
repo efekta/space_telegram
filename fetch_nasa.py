@@ -2,7 +2,7 @@ import requests
 from find_extension_file import find_extension_file
 from download_picture import download_picture
 
-def upload_image_nasa(payload_nasa, directory):
+def fetch_image_nasa(payload_nasa, directory):
     url_nasa = f'https://api.nasa.gov/planetary/apod'
     path_picture = directory
     response_nasa = requests.get(url_nasa, params=payload_nasa)

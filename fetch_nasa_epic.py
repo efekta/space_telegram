@@ -3,7 +3,7 @@ from datetime import datetime
 from find_extension_file import find_extension_file
 from download_picture import download_picture
 
-def upload_image_epic(directory, payload_epic, nasa_token):
+def fetch_image_epic(directory, payload_epic, nasa_token):
     path_picture = directory
     url_nasa_epic = f'https://api.nasa.gov/EPIC/api/natural/'
     response_nasa_epic = requests.get(url_nasa_epic, params=payload_epic)

@@ -4,8 +4,8 @@ import requests
 import telegram
 from pathlib import Path
 from dotenv import load_dotenv
-from fetch_nasa import upload_image_nasa
-from fetch_nasa_epic import upload_image_epic
+from fetch_nasa import fetch_image_nasa
+from fetch_nasa_epic import fetch_image_epic
 from fetch_spacex import fetch_spacex_last_launch
 
 def send_telegram(tg_token: str, tg_chat_id: str, picture_path: str):
@@ -28,8 +28,8 @@ def main():
 
     try:
         fetch_spacex_last_launch(directory)
-        upload_image_nasa(payload_nasa, directory)
-        upload_image_epic(directory, payload_epic, nasa_token)
+        fetch_image_nasa(payload_nasa, directory)
+        fetch_image_epic(directory, payload_epic, nasa_token)
 
     except requests.models.HTTPError:
         print('Некорректный ответ сервера')
