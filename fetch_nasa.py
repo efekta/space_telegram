@@ -15,7 +15,7 @@ def fetch_nasa_apod(payload_nasa, directory):
         file_name = f'planetary_{link_number}{file_extension}'
         picture_path = f'{directory}/{file_name}'
         download_picture(
-            url=link, payload=payload_nasa, path_picture=picture_path)
+            url=link, payload=payload_nasa, path=picture_path)
 
 
 def fetch_nasa_epic(directory, payload_epic):
@@ -35,4 +35,4 @@ def fetch_nasa_epic(directory, payload_epic):
         file_name = f'{image_name}{file_extension}'
         picture_path = f'{directory}/{file_name}'
         download_picture(
-            url=format_url, payload=payload_epic, path_picture=picture_path)
+            url=format_url, payload=payload_epic, path=picture_path)
