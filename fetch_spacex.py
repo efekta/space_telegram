@@ -1,6 +1,6 @@
 import requests
 from download_picture import download_picture
-from find_extension_file import find_extension_file
+from get_file_extension import get_file_extension
 
 
 def fetch_spacex_last_launch(directory):
@@ -11,7 +11,7 @@ def fetch_spacex_last_launch(directory):
     for item in response_links:
         spacex_link = item['flickr_images']
     for link_number, link in enumerate(spacex_link):
-        find_extension = find_extension_file(link)
+        find_extension = get_file_extension(link)
         file_name = f'spacex_{link_number}{find_extension}'
         picture_path = f'{directory}/{file_name}'
         download_picture(url=link, payload='', path_picture=picture_path)

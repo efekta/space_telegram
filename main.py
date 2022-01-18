@@ -4,8 +4,8 @@ import requests
 import telegram
 from pathlib import Path
 from dotenv import load_dotenv
-from fetch_nasa import fetch_image_nasa
-from fetch_nasa_epic import fetch_image_epic
+from fetch_nasa import fetch_nasa_apod
+from fetch_nasa import fetch_nasa_epic
 from fetch_spacex import fetch_spacex_last_launch
 
 
@@ -29,8 +29,8 @@ def main():
     payload_epic = {'api_key': nasa_token}
     try:
         fetch_spacex_last_launch(directory)
-        fetch_image_nasa(payload_nasa, directory)
-        fetch_image_epic(directory, payload_epic)
+        fetch_nasa_apod(payload_nasa, directory)
+        fetch_nasa_epic(directory, payload_epic)
     except requests.models.HTTPError:
         print('Некорректный ответ сервера')
     while True:
