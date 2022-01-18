@@ -11,8 +11,8 @@ def fetch_nasa_apod(payload_nasa, directory):
     response_nasa = response_nasa.json()
     for link_number, link in enumerate(response_nasa):
         link = link['url']
-        find_extension = get_file_extension(link)
-        file_name = f'planetary_{link_number}{find_extension}'
+        file_extension = get_file_extension(link)
+        file_name = f'planetary_{link_number}{file_extension}'
         picture_path = f'{directory}/{file_name}'
         download_picture(
             url=link, payload=payload_nasa, path_picture=picture_path)
@@ -29,10 +29,10 @@ def fetch_nasa_epic(directory, payload_epic):
         date = date_time.date()
         now_date = date.strftime("%Y/%m/%d")
         image_name = item['image']
-        find_extension = '.png'
+        file_extension = '.png'
         format_url = f'https://api.nasa.gov/EPIC/archive/natural/{now_date}' \
-            f'/png/{image_name}{find_extension}'
-        file_name = f'{image_name}{find_extension}'
+            f'/png/{image_name}{file_extension}'
+        file_name = f'{image_name}{file_extension}'
         picture_path = f'{directory}/{file_name}'
         download_picture(
             url=format_url, payload=payload_epic, path_picture=picture_path)
