@@ -10,9 +10,9 @@ def fetch_spacex_last_launch(directory):
     response_links = response.json()
     for item in response_links:
         spacex_link = item['flickr_images']
-    for link_number, link in enumerate(spacex_link):
-        file_extension = get_file_extension(link)
-        file_name = f'spacex_{link_number}{file_extension}'
-        picture_path = f'{directory}/{file_name}'
-        download_picture(url=link, path=picture_path)
+        for link_number, link in enumerate(spacex_link):
+            file_extension = get_file_extension(link)
+            file_name = f'spacex_{link_number}{file_extension}'
+            picture_path = f'{directory}/{file_name}'
+            download_picture(url=link, path=picture_path)
 
